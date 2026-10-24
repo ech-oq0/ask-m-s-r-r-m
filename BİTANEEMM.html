@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aşkııım💕 - Özel Sayfamız</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #31103f 70%, #0f172a 100%);
+      --glass-bg: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-hover: rgba(255, 255, 255, 0.1);
+      --primary-accent: #ec4899;
+      --secondary-accent: #8b5cf6;
+      --text-main: #f8fafc;
+      --text-sub: #cbd5e1;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 16px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .background-orbs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.45;
+      animation: orbFloat 18s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 380px;
+      height: 380px;
+      background: #ec4899;
+      top: -100px;
+      left: -80px;
+    }
+
+    .orb-2 {
+      width: 420px;
+      height: 420px;
+      background: #7c3aed;
+      bottom: -120px;
+      right: -80px;
+      animation-delay: -6s;
+    }
+
+    .orb-3 {
+      width: 280px;
+      height: 280px;
+      background: #f43f5e;
+      top: 40%;
+      left: 60%;
+      animation-delay: -12s;
+    }
+
+    @keyframes orbFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, 30px) scale(1.08); }
+      100% { transform: translate(-30px, 50px) scale(0.95); }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header-card {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 32px;
+    }
+
+    .profile-ring {
+      position: relative;
+      width: 128px;
+      height: 128px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, #ec4899, #8b5cf6, #f43f5e);
+      box-shadow: 0 8px 24px rgba(236, 72, 153, 0.35);
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #0f172a;
+      display: block;
+    }
+
+    .heart-badge {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      background: #ec4899;
+      color: white;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      border: 3px solid #0f172a;
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.5);
+    }
+
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    .counter-card {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .counter-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .counter-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 12px 6px;
+    }
+
+    .counter-number {
+      font-size: 1.35rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff, #cbd5e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .counter-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    .music-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+    }
+
+    .music-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+      flex-shrink: 0;
+    }
+
+    .music-info {
+      flex-grow: 1;
+      overflow: hidden;
+    }
+
+    .song-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .play-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      border: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(236, 72, 153, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .play-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px rgba(236, 72, 153, 0.6);
+    }
+
+    .note-card {
+      position: relative;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .section-icon {
+      font-size: 1.2rem;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .note-text {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--text-sub);
+      background: rgba(0, 0, 0, 0.15);
+      padding: 16px;
+      border-radius: 16px;
+      border-left: 3px solid var(--primary-accent);
+    }
+
+    .secret-btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.15));
+      color: #fff;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .secret-btn:hover {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(139, 92, 246, 0.25));
+      border-color: rgba(236, 72, 153, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: rgba(30, 27, 75, 0.85);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 28px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .modal-body {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .modal-subtext {
+      font-size: 0.82rem;
+      color: #e2e8f0;
+      line-height: 1.55;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px dashed rgba(236, 72, 153, 0.3);
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .close-btn {
+      padding: 10px 24px;
+      border-radius: 12px;
+      border: none;
+      background: #ffffff;
+      color: #0f172a;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .close-btn:hover {
+      background: #f1f5f9;
+    }
+
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ec4899;
+      font-size: 20px;
+      animation: floatUp 4s linear forwards;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.5) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="floating-hearts" id="heartsContainer"></div>
+
+  <!-- Audio Elementi -->
+  <audio id="audioPlayer" src="angel.mp3"></audio>
+
+  <div class="container">
+    
+    <div class="glass-card header-card">
+      <div class="profile-ring">
+        <img class="profile-img" src="https://i.pinimg.com/736x/2a/a1/13/2aa113d129c2a7b632149d4ab7d16857.jpg" alt="Sevgili Fotoğrafı">
+        <div class="heart-badge">❤️</div>
+      </div>
+      <h1 class="title">Aşkııım💕</h1>
+      <p class="subtitle">Seni Çok Sevdiğim Özel Sayfamız ✨</p>
+    </div>
+
+    <div class="glass-card counter-card">
+      <div class="counter-title">Birlikte Geçen Süremiz</div>
+      <div class="counter-grid">
+        <div class="counter-item">
+          <div class="counter-number" id="days">00</div>
+          <div class="counter-label">Gün</div>
+        </div>
+        <div class="counter-item">
+          <div class="counter-number" id="hours">00</div>
+          <div class="counter-label">Saat</div>
+        </div>
+        <div class="counter-item">
+          <div class="counter-number" id="minutes">00</div>
+          <div class="counter-label">Dakika</div>
+        </div>
+        <div class="counter-item">
+          <div class="counter-number" id="seconds">00</div>
+          <div class="counter-label">Saniye</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card music-card">
+      <img class="music-thumb" src="https://i.pinimg.com/736x/d7/c5/0c/d7c50c262430b5b174f5f8684006200a.jpg" alt="Şarkı Kapak">
+      <div class="music-info">
+        <div class="song-title">Angel</div>
+      </div>
+      <button class="play-btn" id="playBtn" onclick="togglePlay()">
+        <svg id="playIcon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+
+    <div class="glass-card note-card">
+      <div class="section-header">
+        <span class="section-icon">💌</span>
+        <span class="section-title">Sana Bir Notum Var</span>
+      </div>
+      <p class="note-text">
+        iyiki hayatıma girdin...iyiki tanışmışız. seni çok seviyorum umarım ilişkimiz evleninceye kadar devam eder.❤️‍🩹❤️‍🩹
+      </p>
+    </div>
+
+    <div class="glass-card note-card">
+      <div class="section-header">
+        <span class="section-icon">📸</span>
+        <span class="section-title">En Sevdiğimiz Anımız</span>
+      </div>
+      <p class="note-text">
+        seninle geçirdiğim her an benim en sevdiğim anlar oldu, bu yüzden buraya tek bir an'ı sığdıramam 🥹
+      </p>
+    </div>
+
+    <button class="secret-btn" onclick="openSecret()">
+      <span>✨ Gizli Sürprizi Aç</span>
+    </button>
+
+  </div>
+
+  <div class="modal-overlay" id="secretModal">
+    <div class="modal-content">
+      <div class="modal-icon">🎁</div>
+      <h2 class="modal-title">Seni Çok Seviyorum!</h2>
+      <p class="modal-body">
+        Sen benim hayatımdaki en güzel şeysin. Her günün seninle daha güzel, daha anlamlı olması dileğiyle... 💕
+      </p>
+      <div class="modal-subtext">
+        Fazla kıskanç olup abarttığım zamanlar için ve istemeden seni kırdığım zamanlar için özür dilerim. Soğuk yapacağın ya da bir gün bırakıp gidecekmişsin gibi olan o his ödümü kopartıyor. seninle konuşuyor olduğum her anı, seninle vakit geçiriyor olduğum her saniyeyi çok seviyorum. Seni bırakmak ya da kaybetmek istemiyorum. beni lütfen bırakma. öyle hissetsen bile bırakma. seni çok seviyorum birtanem :> iyi ki hayatımda ve benimlesin.🥹❤️‍🩹
+      </div>
+      <button class="close-btn" onclick="closeSecret()">Kapat ❤️</button>
+    </div>
+  </div>
+
+  <script>
+    const startDate = new Date('2026-10-10T00:00:00');
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      if (diff < 0) {
+        document.getElementById('days').innerText = '00';
+        document.getElementById('hours').innerText = '00';
+        document.getElementById('minutes').innerText = '00';
+        document.getElementById('seconds').innerText = '00';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('days').innerText = String(days).padStart(2, '0');
+      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    const audio = document.getElementById('audioPlayer');
+    let isPlaying = false;
+
+    // Şarkının 1:30 (90. saniye) ve 2:00 (120. saniye) mantığı
+    audio.addEventListener('timeupdate', function() {
+      if (audio.currentTime >= 120) {
+        audio.pause();
+        audio.currentTime = 90;
+        isPlaying = false;
+        document.getElementById('playBtn').innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+      }
+    });
+
+    function togglePlay() {
+      const playBtn = document.getElementById('playBtn');
+
+      if (!isPlaying) {
+        if (audio.currentTime < 90 || audio.currentTime >= 120) {
+          audio.currentTime = 90; // 1:30'a getir
+        }
+        
+        audio.play().then(() => {
+          isPlaying = true;
+          playBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+        }).catch(err => {
+          alert("Müzik dosyanızı (angel.mp3) index.html ile aynı klasöre koyduğunuzdan emin olun!");
+        });
+
+      } else {
+        audio.pause();
+        isPlaying = false;
+        playBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+      }
+    }
+
+    function openSecret() {
+      document.getElementById('secretModal').classList.add('active');
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+
+    function closeSecret() {
+      document.getElementById('secretModal').classList.remove('active');
+    }
+
+    function createHeart() {
+      const container = document.getElementById('heartsContainer');
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+      container.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 800);
+  </script>
+</body>
+</html>
